@@ -28,7 +28,7 @@ cellranger count --id=sample345 \
                    --chemistry=threeprime
 ```
 
-* all the chemistry options are maybe needed as below:
+* all the chemistry options are maybe needed as shown below:
 
 ```
 --chemistry=CHEM    Assay configuration. One of: 'auto' for autodetection,
