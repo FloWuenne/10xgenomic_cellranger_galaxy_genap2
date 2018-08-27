@@ -25,7 +25,7 @@ cellranger count --id=sample345 \
                    --chemistry=threeprime
 ```
 
-* all the chemistry options are needed
+* all the chemistry options are maybe needed as below:
 
 ```
 --chemistry=CHEM    Assay configuration. One of: 'auto' for autodetection,
@@ -35,8 +35,17 @@ cellranger count --id=sample345 \
                         Single Cell 5' paired-end/R2-only. Default: auto.
 ```
 
-Below
+* cellranger aggr is for multiple-runs. Perhaps, less urgent than other tools.
 
 - [ ] **cellranger aggr** aggregates outputs from multiple runs of cellranger count, normalizing those runs to the same sequencing depth and then recomputing the gene-barcode matrices and analysis on the combined data. The aggr pipeline can be used to combine data from multiple samples into an experiment-wide gene-barcode matrix and analysis.
 
-- [ ] **cellranger reanalyze** takes gene-barcode matrices produced by cellranger count or cellranger aggr and reruns the dimensionality reduction, clustering, and gene expression algorithms using tunable parameter settings.
+
+- [x] **cellranger reanalyze** takes gene-barcode matrices produced by cellranger count or cellranger aggr and reruns the dimensionality reduction, clustering, and gene expression algorithms using tunable parameter settings.
+
+```
+PACKAGE_BASE=/mnt/galaxyTools/tools/cellranger/2.2.0; export PACKAGE_BASE; . /mnt/galaxyTools/tools/cellranger/2.2.0/env.sh; PACKAGE_BASE=/mnt/galaxyTools/tools/illu
+mina/v2.19.1; export PACKAGE_BASE; . /mnt/galaxyTools/tools/illumina/v2.19.1/env.sh
+
+cellranger reanalyze --id=sample345_reanalysis \
+                     --matrix=/scratch/galaxy/test/10xgenomics/sample345/outs/filtered_gene_bc_matrices_h5.h5 \
+```
