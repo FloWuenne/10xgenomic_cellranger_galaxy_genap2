@@ -1,3 +1,7 @@
+# Galaxy wrapper for 10x genomics using CellRanger v3.1
+
+This is a fork from the original CellRanger galaxy implementation by dauss75 to adapt it for the GenAP2 galaxy pipeline using the most recent version of CellRanger.
+
 # galaxy wrapper for 10xgenomics single-cell RNA-seq pipeline
 
 [Cell ranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger) is a set of analysis pipelines that process Chromium single-cell RNA-seq output to align reads, generate gene-cell matrices and perform clustering and gene expression analysis. Cell Ranger includes four pipelines relevant to single-cell gene expression experiments:
