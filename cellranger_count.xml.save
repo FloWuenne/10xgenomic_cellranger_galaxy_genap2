@@ -1,16 +1,10 @@
-<tool id="count" name="cellranger count" version="CELL RANGER: 3.1.0">
+<tool id="count" name="cellranger count" version="CELL RANGER: 2.2.0">
 <description> takes FASTQ files from cellranger mkfastq and performs alignment, filtering, barcode counting, and UMI counting</description>
 
-<command><![CDATA[
-    mkdir ./fastq_dir
-    &&
-    ln -s $input_fastq1 ./fastq_dir/fastq_R1.fastq.gz
-    &&
-    ln -s $input_fastq2 ./fastq_dir/fastq_R1.fastq.gz
-    &&
-    python /cvmfs/soft.galaxy/v2.1/server/tools/florian/genap2_galaxy_cellranger/cellranger_count.py
+<command interpreter="python">
+    count.py
     --id $id
-    --fastqs ./fastq_dir
+    --fastqs $fastqs_path.extra_files_path
     
     #if str($refGenomeSource.genomeSource) == &quot;indexed&quot;
         --transcriptome ${refGenomeSource.index.fields.path}
@@ -27,13 +21,12 @@
     --metric  $metric
     --hdf5  $hdf5
     --mhdf5 $mhdf5
-   ]]>
+   
 </command>
 
 <inputs>
     <param name="id" type="text" label="A unique run ID string: e.g. sample345 (--id)" help=""/>
-    <param name="input_fastq1" type="data" label="Read 1 file for scRNA-seq dataset containing barcode information. (.fastq/.fastq.gz)" help="" format="fastq"/>
-    <param name="input_fastq2" type="data" label="Read 2 file for scRNA-seq dataset containing cDNA information. (.fastq/.fastq.gz)" help="" format="fastq"/>
+    <param name="fastqs_path" type="data" format="txt" label="Path of the fastq_path folder (--fastqs)"/>
 
     <conditional name="refGenomeSource">
         <param help="Built-ins were indexed using default options" label="Will you select a reference genome from your history or use a built-in index?" name="genomeSource" type="select">

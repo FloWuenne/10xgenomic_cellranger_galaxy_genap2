@@ -27,7 +27,7 @@ def __main__():
     if not os.path.exists(options.output_dir):
         os.mkdir(options.output_dir)
     output_dir = options.output_dir
-    cmd = "cellranger count  --id=%s --transcriptome=%s --fastqs=%s --sample=%s --expect-cells=%s --chemistry=%s" % (options.id, options.transcriptome_dir, options.fastqs_dir, options.sample, options.expect_cells, options.chemistry)
+    cmd = "/cvmfs/soft.galaxy/v2.1/server/tools/florian/bin/cellranger-3.1.0/cellranger count  --id=%s --transcriptome=%s --fastqs=%s --sample=%s --expect-cells=%s --chemistry=%s" % (options.id, options.transcriptome_dir, options.fastqs_dir, options.sample, options.expect_cells, options.chemistry)
 
     print cmd
     stdout = tempfile.NamedTemporaryFile( prefix="cellranger-count-stdout-", dir=output_dir )
