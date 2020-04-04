@@ -1,10 +1,5 @@
 <tool id="aggr" name="cellranger aggr" version="CELL RANGER: 2.2.0">
 <description> command takes a CSV file specifying a list of cellranger count output files (specifically the molecule_info.h5 from each run), and produces a single gene-barcode matrix containing all the data</description>
-    <requirements>
-      <requirement type="package" version="2.2.0">cellranger</requirement>
-      <requirement type="package" version="v2.19.1">illumina</requirement>
-      <requirement type="package">pymodules</requirement>
-    </requirements>
 
 <command>
     #set $csv_file =  str($output.extra_files_path) + "/libraries.csv"
