@@ -8,10 +8,10 @@
 	&&
 	ln -s $input_fastq2 ./fastq_dir/fastq_R2.fastq.gz
 	&&
-	/cvmfs/soft.galaxy/v2.1/server/tools/single_cell_tools/bin/cellranger-3.1.0/cellranger count 
+	/cvmfs/soft.galaxy/v2.1/server/tools/florian/bin/cellranger-3.1.0/cellranger count 
 		--id $id
 		--fastqs ./fastq_dir
-		#if str($refGenomeSource.genomeSource) == 'indexed':
+		#if str($refGenomeSource.genomeSource) == 'indexed';
 			--transcriptome ${refGenomeSource.index.fields.path}
 		#else
 			--transcriptome ${refGenomeSource.transcriptome.extra_files_path}

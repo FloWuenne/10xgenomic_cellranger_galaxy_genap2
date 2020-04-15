@@ -2,27 +2,39 @@
 	<description> takes FASTQ files from cellranger mkfastq and performs alignment, filtering, barcode counting, and UMI counting</description>
 
 	<command><![CDATA[
-	mkdir ./fastq_dir
+        echo "new"
 	&&
-	ln -s $input_fastq1 ./fastq_dir/fastq_R1.fastq.gz
+	echo $__new_file_path__
 	&&
-	ln -s $input_fastq2 ./fastq_dir/fastq_R2.fastq.gz
+	mkdir test
 	&&
-	/cvmfs/soft.galaxy/v2.1/server/tools/single_cell_tools/bin/cellranger-3.1.0/cellranger count 
-		--id $id
-		--fastqs ./fastq_dir
-		#if str($refGenomeSource.genomeSource) == 'indexed':
-			--transcriptome ${refGenomeSource.index.fields.path}
-		#else
-			--transcriptome ${refGenomeSource.transcriptome.extra_files_path}
-		#end if
-		--sample $sample
-		--expect-cells $expect_cells
-		--chemistry $chemistry
-		--output-dir $output.extra_files_path
-		--metric  $metric
-		--hdf5  $hdf5
-		--mhdf5 $mhdf5
+        ln -s $input_fastq1 test/fastq_R1.fastq.gz 
+        &&
+        ln -s $input_fastq2 test/fastq_R2.fastq.gz
+        && 
+        ls -la test
+        && 
+       
+
+        /cvmfs/soft.galaxy/v2.1/server/tools/single_cell_tools/bin/cellranger-3.1.0/cellranger count 
+  		--id $id
+  		--fastqs ./test
+ 		#if str($refGenomeSource.genomeSource) == 'indexed':
+   			--transcriptome ${refGenomeSource.index.fields.path}
+  		#else
+			 --transcriptome ${refGenomeSource.transcriptome.extra_files_path}
+  		#end if
+ 		 --sample $sample
+  		--expect-cells $expect_cells
+  		--chemistry $chemistry
+  		--output-dir $output.extra_files_path
+  		--metric  $metric
+  		--hdf5  $hdf5
+  		--mhdf5 $mhdf5               
+       
+		
+		
+		
 	]]>
 	</command>
 
